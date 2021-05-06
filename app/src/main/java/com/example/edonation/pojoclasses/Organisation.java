@@ -1,75 +1,118 @@
 package com.example.edonation.pojoclasses;
 
 public class Organisation {
-    String registerFullName, registerEmail, registerPassword, registerLocation, registerWebsite,registerABN;
-    Long registerPhoneNo;
+    String fullName, email, password, location, website, ABN, description;
+    Long phoneNo;
+    String Clothes, Books, Food, Stationery;
 
     public Organisation(){
 
     }
-    public Organisation(String registerFullName, String registerEmail, String registerPassword, String registerLocation, String registerWebsite, long registerPhoneNo, String registerABN) {
-        this.registerFullName = registerFullName;
-        this.registerEmail = registerEmail;
-        this.registerPassword = registerPassword;
-        this.registerLocation = registerLocation;
-        this.registerWebsite = registerWebsite;
-        this.registerPhoneNo = registerPhoneNo;
-        this.registerABN = registerABN;
+    public Organisation(String fullName, String email, String password, String location, String website, String ABN, Long phoneNo, String description) {
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.location = location;
+        this.website = website;
+        this.ABN = ABN;
+        this.phoneNo = phoneNo;
+        this.description=description;
     }
 
-    public String getRegisterFullName() {
-        return registerFullName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRegisterFullName(String registerFullName) {
-        this.registerFullName = registerFullName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getRegisterEmail() {
-        return registerEmail;
+    public String getClothes() {
+        return Clothes;
     }
 
-    public void setRegisterEmail(String registerEmail) {
-        this.registerEmail = registerEmail;
+    public void setClothes(String clothes) {
+        Clothes = clothes;
     }
 
-    public String getRegisterPassword() {
-        return registerPassword;
+    public String getBooks() {
+        return Books;
     }
 
-    public void setRegisterPassword(String registerPassword) {
-        this.registerPassword = registerPassword;
+    public void setBooks(String books) {
+        Books = books;
     }
 
-    public String getRegisterLocation() {
-        return registerLocation;
+    public String getFood() {
+        return Food;
     }
 
-    public void setRegisterLocation(String registerLocation) {
-        this.registerLocation = registerLocation;
+    public void setFood(String food) {
+        Food = food;
     }
 
-    public String getRegisterWebsite() {
-        return registerWebsite;
+    public String getStationery() {
+        return Stationery;
     }
 
-    public void setRegisterWebsite(String registerWebsite) {
-        this.registerWebsite = registerWebsite;
+    public void setStationery(String stationery) {
+        Stationery = stationery;
     }
 
-    public String getRegisterABN() {
-        return registerABN;
+
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setRegisterABN(String registerABN) {
-        this.registerABN = registerABN;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public Long getRegisterPhoneNo() {
-        return registerPhoneNo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRegisterPhoneNo(Long registerPhoneNo) {
-        this.registerPhoneNo = registerPhoneNo;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getABN() {
+        return ABN;
+    }
+
+    public void setABN(String ABN) {
+        this.ABN = ABN;
+    }
+
+    public Long getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(Long phoneNo) {
+        this.phoneNo = phoneNo;
     }
 }

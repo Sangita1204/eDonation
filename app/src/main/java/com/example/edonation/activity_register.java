@@ -20,11 +20,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class activity_register extends AppCompatActivity {
    EditText registerFullName, registerEmail, registerPassword, registerLocation,
-    registerPhoneNo, registerWebsite, registerABN;
+    registerPhoneNo, registerWebsite, registerABN, registerDescription;
     Button registerButton;
     CheckBox checkboxStationery, checkboxClothes,
     checkboxBooks, checkboxFood;
-    EditText registerDescription;
+
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -40,6 +40,16 @@ public class activity_register extends AppCompatActivity {
         registerWebsite=findViewById(R.id.registerWebsite);
         registerABN=findViewById(R.id.registerABN);
         registerButton=findViewById(R.id.registerButton);
+        registerDescription=findViewById(R.id.registerDescription);
+        checkboxBooks=findViewById(R.id.checkboxBooks);
+        checkboxClothes=findViewById(R.id.checkboxClothes);
+        checkboxFood=findViewById(R.id.checkboxFood);
+        checkboxStationery=findViewById(R.id.checkboxStationery);
+
+        String ckClothes="Clothes";
+        String ckBooks="Books";
+        String ckStationery="Stationery";
+        String ckFood="Food";
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +65,31 @@ public class activity_register extends AppCompatActivity {
                 long phoneNo= Long.parseLong(registerPhoneNo.getText().toString());
                 String website= registerWebsite.getText().toString();
                 String ABN= registerABN.getText().toString();
-                Organisation organisationData=new Organisation(fullName, email, password, location, website, phoneNo, ABN);
+                String description=registerDescription.getText().toString();
+
+
+
+                Organisation organisationData=new Organisation(fullName, email, password, location, website, ABN, phoneNo, description);
+                if(checkboxBooks.isChecked()){
+                    organisationData.setBooks(ckBooks);
+                }else{
+                    organisationData.setBooks(null);
+                }
+                if(checkboxClothes.isChecked()){
+                    organisationData.setClothes(ckClothes);
+                }else{
+                    organisationData.setClothes(null);
+                }
+                if(checkboxFood.isChecked()){
+                    organisationData.setBooks(ckFood);
+                }else{
+                    organisationData.setFood(null);
+                }
+                if(checkboxStationery.isChecked()){
+                    organisationData.setStationery(ckStationery);
+                }else{
+                    organisationData.setStationery(null);
+                }
                 reference.child(email).setValue(organisationData);
                 Intent intent=new Intent(getApplicationContext(),activity_login.class);
                 startActivity(intent);

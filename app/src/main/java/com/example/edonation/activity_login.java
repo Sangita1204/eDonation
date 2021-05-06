@@ -21,13 +21,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class activity_login extends AppCompatActivity {
 
-    TextView registerHere;
+    TextView registerHere, donorLink;
     EditText loginEmail, loginPassword;
     Button loginButton;
 
     private Boolean validateOrganisationEmail(){
         String val=loginEmail.getText().toString();
-        Log.d("hello", val);
+
         if (val.isEmpty()){
             loginEmail.setError("Email cannot be empty");
             return  false;
@@ -61,9 +61,9 @@ public class activity_login extends AppCompatActivity {
         String organisationEnteredEmail=loginEmail.getText().toString().trim();
         String organisationEnteredPassword=loginPassword.getText().toString().trim();
 
-        System.out.println("lo"+ organisationEnteredPassword);
-        //DatabaseReference reference= FirebaseDatabase.getInstance().getReference("organisationDetails");
-        Query checkOrganisation= FirebaseDatabase.getInstance().getReference("organisationDetails").orderByChild("registerEmail").equalTo(organisationEnteredEmail);
+
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("organisationDetails");
+        Query checkOrganisation= reference.orderByChild("email").equalTo(organisationEnteredEmail);
 
          checkOrganisation.addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
@@ -74,12 +74,12 @@ public class activity_login extends AppCompatActivity {
                      System.out.println("pa");
                     String ad=organisationEnteredEmail;
                     Log.d("hellooooo",ad);
-                     String passwordFromDB= datasnapshot.child(organisationEnteredEmail).child("registerPassword").getValue(String.class);
+                     String passwordFromDB= datasnapshot.child(organisationEnteredEmail).child("password").getValue(String.class);
                      System.out.println("pa"+ passwordFromDB);
                      if(passwordFromDB.equals(organisationEnteredPassword)){
                          loginPassword.setError(null);
                          String email= datasnapshot.child(organisationEnteredEmail).child("registerEmail").getValue(String.class);
-                         Intent intent=new Intent(getApplicationContext(), activity_register.class);
+                         Intent intent=new Intent(getApplicationContext(), MainActivity.class);
                          startActivity(intent);
                      }else{
                             loginPassword.setError("Wrong Password");
@@ -105,6 +105,7 @@ public class activity_login extends AppCompatActivity {
         loginEmail=findViewById(R.id.loginEmail);
         loginPassword=findViewById(R.id.loginPassword);
         registerHere=findViewById(R.id.loginRegisterLink);
+        donorLink=findViewById(R.id.loginDonorLink);
         loginButton=findViewById(R.id.loginButton);
 
         registerHere.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +116,13 @@ public class activity_login extends AppCompatActivity {
 
             }
 
+        });
+        donorLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), activity_donorDashboard.class);
+                startActivity(intent);
+            }
         });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
