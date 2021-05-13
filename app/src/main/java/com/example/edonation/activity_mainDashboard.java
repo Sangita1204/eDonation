@@ -44,7 +44,7 @@ public class activity_mainDashboard extends AppCompatActivity
                     fetchdata.add(data);
 
                 }
-                organisationAdapter=new organisationAdapter(fetchdata);
+                organisationAdapter=new organisationAdapter(activity_mainDashboard.this, fetchdata);
                 recyclerView.setAdapter(organisationAdapter);
             }
 

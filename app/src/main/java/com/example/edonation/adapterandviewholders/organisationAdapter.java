@@ -1,14 +1,22 @@
 package com.example.edonation.adapterandviewholders;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.edonation.R;
+import com.example.edonation.activity_mainDashboard;
+import com.example.edonation.activity_organisation_detail;
 import com.example.edonation.pojoclasses.Organisation;
 
 import java.util.List;
@@ -17,16 +25,20 @@ public class organisationAdapter extends RecyclerView.Adapter {
     List<Organisation> fetchDataList;
     String books,clothes, stationery, food;
     String finalNeed;
+    Context context;
+    RelativeLayout relativeLayout;
 
-
-    public organisationAdapter(List<Organisation> fetchDataList) {
+    public organisationAdapter( Context context, List<Organisation> fetchDataList) {
         this.fetchDataList = fetchDataList;
+        this.context=context;
+
     }
+
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_recycler_view_organisationlist, parent, false);
+        View view= LayoutInflater.from(context).inflate(R.layout.adapter_recycler_view_organisationlist, parent, false);
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }
@@ -58,6 +70,23 @@ public class organisationAdapter extends RecyclerView.Adapter {
         }
             finalNeed="Currently Looking \n"+books +"\n"+clothes+"\n"+stationery+"\n"+food;
             viewHolder.needText.setText(finalNeed);
+           viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("name", fetchData.getFullName());
+                    Intent intent=new Intent(context, activity_organisation_detail.class);
+                    intent.putExtra("organisationName", fetchData.getFullName());
+                    intent.putExtra("organisationLocation", fetchData.getLocation());
+                    intent.putExtra("organisationEmail", fetchData.getEmail());
+                   // intent.putExtra("currentDonation",currentlyLooking);
+
+                    intent.putExtra("description", fetchData.getDescription());
+                    intent.putExtra("website", fetchData.getWebsite());
+                    intent.putExtra("phone", fetchData.getPhoneNo());
+                    context.startActivity(intent);
+                }
+            });
+
 
     }
 
@@ -67,13 +96,18 @@ public class organisationAdapter extends RecyclerView.Adapter {
     }
 
     public class  ViewHolder extends  RecyclerView.ViewHolder{
+        public View relativeLayout;
         TextView orgName, location, needText;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             orgName=itemView.findViewById(R.id.orgName);
             location=itemView.findViewById(R.id.location);
             needText=itemView.findViewById(R.id.needTxt);
+            relativeLayout =itemView.findViewById(R.id.relativeLayout);
+
+
         }
     }
 }
