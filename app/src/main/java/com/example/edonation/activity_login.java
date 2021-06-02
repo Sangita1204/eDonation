@@ -80,7 +80,7 @@ public class activity_login extends AppCompatActivity {
                         if(passwordFromDB.equals(organisationEnteredPassword)){
                             loginPassword.setError(null);
                             String email= datasnapshot.child(organisationEnteredEmail).child("registerEmail").getValue(String.class);
-                            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent=new Intent(getApplicationContext(), activity_organisationDashboard.class);
                             startActivity(intent);
                         }else{
                             loginPassword.setError("Wrong Password");
