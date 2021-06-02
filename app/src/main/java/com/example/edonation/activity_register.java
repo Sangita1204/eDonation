@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.example.edonation.pojoclasses.CurrentlyLooking;
 import com.example.edonation.pojoclasses.Organisation;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,7 +25,7 @@ public class activity_register extends AppCompatActivity {
     Button registerButton;
     CheckBox checkboxStationery, checkboxClothes,
     checkboxBooks, checkboxFood;
-
+    private boolean foodBoolean, clothesBoolean, stationeryBoolean, booksBoolean;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -66,30 +67,28 @@ public class activity_register extends AppCompatActivity {
                 String website= registerWebsite.getText().toString();
                 String ABN= registerABN.getText().toString();
                 String description=registerDescription.getText().toString();
+                if (checkboxFood.isChecked()) {
+                    foodBoolean = true;
+                    //= "," + "Stationery"Log.i("food", currentlyLooking);
+                }
 
+                if (checkboxBooks.isChecked()) {
+                    booksBoolean = true;
+                    //Log.i("clothes", currentlyLooking);
+                }
 
+                if (checkboxClothes.isChecked()) {
+                    clothesBoolean = true;
+                }
 
-                Organisation organisationData=new Organisation(fullName, email, password, location, website, ABN, phoneNo, description);
-                if(checkboxBooks.isChecked()){
-                    organisationData.setBooks(ckBooks);
-                }else{
-                    organisationData.setBooks(null);
+                if (checkboxStationery.isChecked()) {
+                    stationeryBoolean = true;
                 }
-                if(checkboxClothes.isChecked()){
-                    organisationData.setClothes(ckClothes);
-                }else{
-                    organisationData.setClothes(null);
-                }
-                if(checkboxFood.isChecked()){
-                    organisationData.setBooks(ckFood);
-                }else{
-                    organisationData.setFood(null);
-                }
-                if(checkboxStationery.isChecked()){
-                    organisationData.setStationery(ckStationery);
-                }else{
-                    organisationData.setStationery(null);
-                }
+
+                CurrentlyLooking currentlyLooking = new CurrentlyLooking(foodBoolean,
+                        clothesBoolean, booksBoolean, stationeryBoolean);
+                Organisation organisationData=new Organisation(fullName, email, password, location, website, ABN, phoneNo, description, currentlyLooking);
+//
                 reference.child(email).setValue(organisationData);
                 Intent intent=new Intent(getApplicationContext(),activity_login.class);
                 startActivity(intent);

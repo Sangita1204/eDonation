@@ -4,11 +4,15 @@ public class Organisation {
     String fullName, email, password, location, website, ABN, description;
     Long phoneNo;
     String Clothes, Books, Food, Stationery;
+    CurrentlyLooking currentlyLooking;
+
+
 
     public Organisation(){
 
     }
-    public Organisation(String fullName, String email, String password, String location, String website, String ABN, Long phoneNo, String description) {
+    public Organisation(String fullName, String email, String password, String location, String website, String ABN, Long phoneNo, String description,
+                        CurrentlyLooking currentlyLooking) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
@@ -17,6 +21,14 @@ public class Organisation {
         this.ABN = ABN;
         this.phoneNo = phoneNo;
         this.description=description;
+        this.currentlyLooking=currentlyLooking;
+    }
+    public CurrentlyLooking getCurrentlyLooking() {
+        return currentlyLooking;
+    }
+
+    public void setCurrentlyLooking(CurrentlyLooking currentlyLooking) {
+        this.currentlyLooking = currentlyLooking;
     }
 
     public String getDescription() {

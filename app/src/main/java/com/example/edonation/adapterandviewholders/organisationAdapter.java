@@ -17,16 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.edonation.R;
 import com.example.edonation.activity_mainDashboard;
 import com.example.edonation.activity_organisation_detail;
+import com.example.edonation.pojoclasses.CurrentlyLooking;
 import com.example.edonation.pojoclasses.Organisation;
 
 import java.util.List;
 
 public class organisationAdapter extends RecyclerView.Adapter {
     List<Organisation> fetchDataList;
-    String books,clothes, stationery, food;
+    Boolean books,clothes, stationery, food;
     String finalNeed;
     Context context;
     RelativeLayout relativeLayout;
+    CurrentlyLooking currentlyLooking;
 
     public organisationAdapter( Context context, List<Organisation> fetchDataList) {
         this.fetchDataList = fetchDataList;
@@ -45,31 +47,40 @@ public class organisationAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-           ViewHolder viewHolder=(ViewHolder)holder;
-            Organisation fetchData=fetchDataList.get(position);
-            viewHolder.orgName.setText(fetchData.getFullName());
-            viewHolder.location.setText(fetchData.getLocation());
+        String foodString;
+        String clothesString;
+        String booksString;
+        String stationeryString;
+        ViewHolder viewHolder=(ViewHolder)holder;
+        Organisation fetchData=fetchDataList.get(position);
+        viewHolder.orgName.setText(fetchData.getFullName());
+        viewHolder.location.setText(fetchData.getLocation());
 
-            if(fetchData.getBooks()!=null){
-                books=fetchData.getBooks();
+        boolean clothes = fetchData.getCurrentlyLooking().isClothes();
+        boolean books = fetchData.getCurrentlyLooking().isBooks();
+        boolean stationery = fetchData.getCurrentlyLooking().isStationery();
+        boolean food = fetchData.getCurrentlyLooking().isFoods();
+
+            if(books==true){
+                booksString="Book\n";
 
             }else{
-                books="";
-            }if(fetchData.getClothes()!=null){
-            clothes=fetchData.getClothes();
+                booksString="";
+            }if(clothes==true){
+            clothesString="Clothes\n";
         }else{
-                clothes="";
-        }if(fetchData.getStationery()!=null){
-            stationery=fetchData.getStationery();
+                clothesString="";
+        }if(stationery==true){
+            stationeryString="Stationery\n";
         }else{
-            stationery="";
-        }if(fetchData.getFood()!=null){
-                food=fetchData.getFood();
+            stationeryString="";
+        }if(food==true){
+                foodString="Food\n";
         }else{
-
+                foodString="";
         }
-            finalNeed="Currently Looking \n"+books +"\n"+clothes+"\n"+stationery+"\n"+food;
-            viewHolder.needText.setText(finalNeed);
+            finalNeed=foodString+clothesString+booksString+stationeryString;
+            viewHolder.needText.setText("Currently looking \n" +finalNeed);
            viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -78,7 +89,7 @@ public class organisationAdapter extends RecyclerView.Adapter {
                     intent.putExtra("organisationName", fetchData.getFullName());
                     intent.putExtra("organisationLocation", fetchData.getLocation());
                     intent.putExtra("organisationEmail", fetchData.getEmail());
-                   // intent.putExtra("currentDonation",currentlyLooking);
+                    intent.putExtra("currentRequirement",finalNeed);
 
                     intent.putExtra("description", fetchData.getDescription());
                     intent.putExtra("website", fetchData.getWebsite());

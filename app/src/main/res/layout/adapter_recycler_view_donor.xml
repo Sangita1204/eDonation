@@ -51,13 +51,87 @@
                     android:textColor="@color/black"
                     android:textSize="10dp" />
 
-                <ImageButton
+                <!--<ImageButton
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:background="@null"
                     android:src="@drawable/website_button"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true" />-->
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/emailContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locationContainer"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_email" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="10dp" />
+
+                <!--<ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@null"
+                    android:src="@drawable/website_button"
+                    android:layout_alignParentRight="true" />-->
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/phoneContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emailContainer"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_contact_phone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="10dp" />
+
+                <!--<ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@null"
+                    android:src="@drawable/website_button"
+                    android:layout_alignParentRight="true" />-->
             </RelativeLayout>
 
         </LinearLayout>
@@ -66,7 +140,7 @@
             android:id="@+id/ll_currentNeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/locationContainer"
+            android:layout_below="@+id/phoneContainer"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
@@ -87,7 +161,7 @@
                 android:textSize="10dp" />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/llorganizationName"
+            android:id="@+id/llorganisationName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_currentNeed"
@@ -101,7 +175,7 @@
                 android:src="@mipmap/icon_tick" />
 
             <TextView
-                android:id="@+id/organization_name"
+                android:id="@+id/organisation_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"

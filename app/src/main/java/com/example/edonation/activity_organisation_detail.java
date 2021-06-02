@@ -13,7 +13,7 @@ import android.widget.Toolbar;
 
 public class activity_organisation_detail extends AppCompatActivity {
 
-    TextView name, location, descriptionDetail, emailDetail;
+    TextView name, location, descriptionDetail, emailDetail, needDetail;
     Button callBtn, websiteBtn;
     Toolbar toolbar;
 
@@ -23,7 +23,7 @@ public class activity_organisation_detail extends AppCompatActivity {
         setContentView(R.layout.activity_organisation_detail);
         name = findViewById(R.id.orgNameDetail);
         location = findViewById(R.id.locationDetail);
-
+        needDetail=findViewById(R.id.needDetail);
         descriptionDetail = findViewById(R.id.descriptionDetail);
         websiteBtn = findViewById(R.id.btnWebsiteDetail);
         callBtn = findViewById(R.id.callBtnDetail);
@@ -35,7 +35,7 @@ public class activity_organisation_detail extends AppCompatActivity {
     private void getIntents() {
         if (getIntent().hasExtra("organisationName") && getIntent().hasExtra("organisationLocation")
                 && getIntent().hasExtra("organisationEmail")
-                // && getIntent().hasExtra("currentRequirement")
+               && getIntent().hasExtra("currentRequirement")
                 && getIntent().hasExtra("description")
                 && getIntent().hasExtra("website") && getIntent().hasExtra("phone")) {
 
@@ -44,29 +44,29 @@ public class activity_organisation_detail extends AppCompatActivity {
             Log.d("namess", orgName);
             String orgLocation = getIntent().getStringExtra("organisationLocation");
             String email = getIntent().getStringExtra("organisationEmail");
-            //String currentReq = getIntent().getStringExtra("currentRequirement");
+            String currentReq = getIntent().getStringExtra("currentRequirement");
             String description = getIntent().getStringExtra("description");
             String website = getIntent().getStringExtra("website");
             Long phone = getIntent().getLongExtra("phone", 0);
 
-            setDetails(orgName, orgLocation, email, description,
+            setDetails(orgName, orgLocation, email, currentReq, description,
                     website, phone);
         }
     }
 
-    private void setDetails(String orgName, String orgLocation, String email,
+    private void setDetails(String orgName, String orgLocation, String email, String currentReq,
                             String description,
                             final String website, final long phone) {
         name.setText(orgName);
         location.setText(orgLocation);
         emailDetail.setText(email);
-
+        needDetail.setText(currentReq);
 
         if (description.equals("")) {
-            descriptionDetail.setText("We aren't accepting any donation at this time. " +
+            descriptionDetail.setText("There is no Special Requirement. " +
                     "Thank you!!!!!");
         } else {
-            descriptionDetail.setText("We are currently looking for " + description);
+            descriptionDetail.setText(description);
         }
 
 
@@ -93,7 +93,7 @@ public class activity_organisation_detail extends AppCompatActivity {
                     }
                 } else if (phoneNo.length() >= 7 && phoneNo.length() < 10) {
                     Intent intent = new Intent(Intent.ACTION_DIAL,
-                            Uri.parse("tel: 01" + String.valueOf(phone)));
+                            Uri.parse("tel: 0" + String.valueOf(phone)));
 
                     try {
                         startActivity(intent);
@@ -107,7 +107,7 @@ public class activity_organisation_detail extends AppCompatActivity {
     private void initComponents() {
         name = findViewById(R.id.orgNameDetail);
         location = findViewById(R.id.locationDetail);
-
+        needDetail=findViewById(R.id.needDetail);
         descriptionDetail = findViewById(R.id.descriptionDetail);
         websiteBtn = findViewById(R.id.btnWebsiteDetail);
         callBtn = findViewById(R.id.callBtnDetail);

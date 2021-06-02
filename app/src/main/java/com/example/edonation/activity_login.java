@@ -58,45 +58,50 @@ public class activity_login extends AppCompatActivity {
     }
 
     private void isOrganisation(){
-        String organisationEnteredEmail=loginEmail.getText().toString().trim();
-        String organisationEnteredPassword=loginPassword.getText().toString().trim();
+        try{
+            String organisationEnteredEmail=loginEmail.getText().toString().trim();
+            String organisationEnteredPassword=loginPassword.getText().toString().trim();
 
 
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("organisationDetails");
-        Query checkOrganisation= reference.orderByChild("email").equalTo(organisationEnteredEmail);
+            DatabaseReference reference= FirebaseDatabase.getInstance().getReference("organisationDetails");
+            Query checkOrganisation= reference.orderByChild("email").equalTo(organisationEnteredEmail);
 
-         checkOrganisation.addListenerForSingleValueEvent(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+            checkOrganisation.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
 
-                 if(datasnapshot.exists()){
-                     loginEmail.setError(null);
-                     System.out.println("pa");
-                    String ad=organisationEnteredEmail;
-                    Log.d("hellooooo",ad);
-                     String passwordFromDB= datasnapshot.child(organisationEnteredEmail).child("password").getValue(String.class);
-                     System.out.println("pa"+ passwordFromDB);
-                     if(passwordFromDB.equals(organisationEnteredPassword)){
-                         loginPassword.setError(null);
-                         String email= datasnapshot.child(organisationEnteredEmail).child("registerEmail").getValue(String.class);
-                         Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-                         startActivity(intent);
-                     }else{
+                    if(datasnapshot.exists()){
+                        loginEmail.setError(null);
+                        System.out.println("pa");
+                        String ad=organisationEnteredEmail;
+                        Log.d("hellooooo",ad);
+                        String passwordFromDB= datasnapshot.child(organisationEnteredEmail).child("password").getValue(String.class);
+                        System.out.println("pa"+ passwordFromDB);
+                        if(passwordFromDB.equals(organisationEnteredPassword)){
+                            loginPassword.setError(null);
+                            String email= datasnapshot.child(organisationEnteredEmail).child("registerEmail").getValue(String.class);
+                            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }else{
                             loginPassword.setError("Wrong Password");
                             loginPassword.requestFocus();
-                     }
-                 }
-                 else{
-                     loginEmail.setError("No such organisation exist");
-                     loginEmail.requestFocus();
-                 }
-             }
+                        }
+                    }
+                    else{
+                        loginEmail.setError("No such organisation exist");
+                        loginEmail.requestFocus();
+                    }
+                }
 
-             @Override
-             public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-             }
-         });
+                }
+            });
+        }catch (Exception e){
+            System.out.println("exception" +e);
+        }
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

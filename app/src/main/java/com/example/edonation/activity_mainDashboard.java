@@ -20,7 +20,7 @@ import java.util.List;
 
 public class activity_mainDashboard extends AppCompatActivity
 {
-    List<Organisation> fetchdata;
+    List<Organisation> fetchData;
     RecyclerView recyclerView;
     organisationAdapter organisationAdapter;
     DatabaseReference databaseReference;
@@ -31,7 +31,7 @@ public class activity_mainDashboard extends AppCompatActivity
         setContentView(R.layout.activity_maindashboard);
         recyclerView=findViewById(R.id.recyclerviewOrganisationList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        fetchdata=new ArrayList<>();
+        fetchData=new ArrayList<>();
 
         databaseReference= FirebaseDatabase.getInstance().getReference("organisationDetails");
 
@@ -41,10 +41,10 @@ public class activity_mainDashboard extends AppCompatActivity
                 for(DataSnapshot ss:snapshot.getChildren())
                 {
                     Organisation data=ss.getValue(Organisation.class);
-                    fetchdata.add(data);
+                    fetchData.add(data);
 
                 }
-                organisationAdapter=new organisationAdapter(activity_mainDashboard.this, fetchdata);
+                organisationAdapter=new organisationAdapter(activity_mainDashboard.this, fetchData);
                 recyclerView.setAdapter(organisationAdapter);
             }
 
