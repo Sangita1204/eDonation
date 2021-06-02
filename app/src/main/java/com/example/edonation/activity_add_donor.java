@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.edonation.pojoclasses.CurrentlyLooking;
 import com.example.edonation.pojoclasses.Donor;
+import com.example.edonation.utils.ExtraUtils;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,6 +28,19 @@ public class activity_add_donor extends Fragment {
     private boolean foodBoolean, clothesBoolean, stationeryBoolean, booksBoolean;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+
+    String email;
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if(getArguments() != null)
+            email = getArguments().getString(ExtraUtils.EXTRA_EMAIL); // Passing Data
+
+        Log.i("EmailPassCheck","Email: "+email);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)

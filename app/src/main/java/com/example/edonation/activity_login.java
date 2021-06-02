@@ -1,8 +1,5 @@
 package com.example.edonation;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,8 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.edonation.utils.ExtraUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,8 +79,10 @@ public class activity_login extends AppCompatActivity {
                         System.out.println("pa"+ passwordFromDB);
                         if(passwordFromDB.equals(organisationEnteredPassword)){
                             loginPassword.setError(null);
+                            // Value null aairako cha
                             String email= datasnapshot.child(organisationEnteredEmail).child("registerEmail").getValue(String.class);
                             Intent intent=new Intent(getApplicationContext(), activity_organisationDashboard.class);
+                            intent.putExtra(ExtraUtils.EXTRA_EMAIL, organisationEnteredEmail); // Passing Data
                             startActivity(intent);
                         }else{
                             loginPassword.setError("Wrong Password");

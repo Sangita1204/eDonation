@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.example.edonation.adapterandviewholders.donorAdapter;
 import com.example.edonation.adapterandviewholders.organisationAdapter;
 import com.example.edonation.pojoclasses.Donor;
 import com.example.edonation.pojoclasses.Organisation;
+import com.example.edonation.utils.ExtraUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +32,18 @@ public class activity_donorDashboard extends Fragment {
     RecyclerView recyclerView;
     com.example.edonation.adapterandviewholders.donorAdapter donorAdapter;
     DatabaseReference databaseReference;
+
+    String email;
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments() != null)
+            email = getArguments().getString(ExtraUtils.EXTRA_EMAIL); // Passing Data
+
+        Log.i("EmailPassCheck","Email: "+email);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
