@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.edonation.pojoclasses.CurrentlyLooking;
 import com.example.edonation.pojoclasses.Organisation;
@@ -88,8 +89,12 @@ public class activity_register extends AppCompatActivity {
                 CurrentlyLooking currentlyLooking = new CurrentlyLooking(foodBoolean,
                         clothesBoolean, booksBoolean, stationeryBoolean);
                 Organisation organisationData=new Organisation(fullName, email, password, location, website, ABN, phoneNo, description, currentlyLooking);
-//
-                reference.child(email).setValue(organisationData);
+              Toast toast = Toast.makeText(getApplicationContext(),
+                                    "Registered Successfully",
+                                    Toast.LENGTH_LONG);
+                toast.show();
+//                            progressBar.setVisibility(View.VISIBLE);
+                reference.child(fullName).setValue(organisationData);
                 Intent intent=new Intent(getApplicationContext(),activity_login.class);
                 startActivity(intent);
                 

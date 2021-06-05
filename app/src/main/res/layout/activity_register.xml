@@ -5,228 +5,271 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
         xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="30dp"
-    tools:context=".activity_login"
-    android:layout_gravity="center_horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Register Here"
-            android:textSize="40sp"
-            android:textAlignment="center"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center_horizontal" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_marginBottom="5dp"
-            tools:ignore="MissingConstraints"
-            >
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Full Name"
-                android:ems="10"
-                android:inputType="text"
-                android:id="@+id/registerFullName"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_marginBottom="5dp"
-            tools:ignore="MissingConstraints">
-
-            <EditText
-                android:id="@+id/registerEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            tools:ignore="MissingConstraints"
-            android:layout_marginBottom="5dp">
-
-            <EditText
-                android:id="@+id/registerPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_marginBottom="5dp"
-            tools:ignore="MissingConstraints">
-
-            <EditText
-                android:id="@+id/registerLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Location"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_marginBottom="5dp"
-            tools:ignore="MissingConstraints">
-
-            <EditText
-                android:id="@+id/registerPhoneno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Phone no."
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_marginBottom="5dp"
-            tools:ignore="MissingConstraints">
-
-            <EditText
-                android:id="@+id/registerWebsite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Website"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_marginBottom="5dp"
-            tools:ignore="MissingConstraints">
-
-            <EditText
-                android:id="@+id/registerABN"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="ABN"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="92dp"
-            android:layout_height="28dp"
-            android:text="Items"
-            tools:layout_editor_absoluteX="14dp"
-            tools:layout_editor_absoluteY="525dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="3dp"
+        tools:context=".activity_login"
+        android:layout_gravity="center_horizontal">
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffff"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:padding="5dp">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp"
+            tools:context=".activity_login"
+            android:layout_gravity="center_horizontal">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register Here"
+                android:textSize="30sp"
+                android:textAlignment="center"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="55dp"
 
-            <CheckBox
-                android:id="@+id/checkboxStationery"
+                android:gravity="center_horizontal" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginBottom="5dp"
+                tools:ignore="MissingConstraints"
+                >
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Full Name"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:id="@+id/registerFullName"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginBottom="5dp"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/registerEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                tools:ignore="MissingConstraints"
+                android:layout_marginBottom="5dp"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/registerPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginBottom="5dp"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/registerLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Location"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginBottom="5dp"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/registerPhoneno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Phone no."
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginBottom="5dp"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/registerWebsite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Website"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginBottom="5dp"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/registerABN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="ABN"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="92dp"
+                android:layout_height="28dp"
+                android:text="Items"
+                tools:layout_editor_absoluteX="14dp"
+                tools:layout_editor_absoluteY="525dp" />
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stationery"
-                tools:layout_editor_absoluteX="263dp"
-                tools:layout_editor_absoluteY="566dp" />
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkboxClothes"
+
+                <CheckBox
+                    android:id="@+id/checkboxStationery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stationery"
+                    tools:layout_editor_absoluteX="263dp"
+                    tools:layout_editor_absoluteY="566dp" />
+
+                <CheckBox
+                    android:id="@+id/checkboxClothes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clothes"
+                    tools:layout_editor_absoluteX="89dp"
+                    tools:layout_editor_absoluteY="566dp" />
+
+                <CheckBox
+                    android:id="@+id/checkboxBooks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Books"
+                    tools:layout_editor_absoluteX="184dp"
+                    tools:layout_editor_absoluteY="566dp" />
+
+                <CheckBox
+                    android:id="@+id/checkboxFood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food"
+                    tools:layout_editor_absoluteX="19dp"
+                    tools:layout_editor_absoluteY="564dp" />
+
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clothes"
-                tools:layout_editor_absoluteX="89dp"
-                tools:layout_editor_absoluteY="566dp" />
+                android:text="Description"
+                tools:layout_editor_absoluteX="22dp"
+                tools:layout_editor_absoluteY="620dp" />
 
-            <CheckBox
-                android:id="@+id/checkboxBooks"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginBottom="5dp"
+                tools:ignore="MissingConstraints">
+
+                <EditText
+                    android:id="@+id/registerDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Description"
+                    tools:layout_editor_absoluteX="15dp"
+                    tools:layout_editor_absoluteY="648dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/registerButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Books"
-                tools:layout_editor_absoluteX="184dp"
-                tools:layout_editor_absoluteY="566dp" />
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="20dp"
+                android:text="Register" />
 
-            <CheckBox
-                android:id="@+id/checkboxFood"
-                android:layout_width="wrap_content"
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Food"
-                tools:layout_editor_absoluteX="19dp"
-                tools:layout_editor_absoluteY="564dp" />
-
+                android:visibility="invisible" />
 
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/textView4"
+    </RelativeLayout>
+        <ImageButton
+            android:id="@+id/user_profile_photo"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@mipmap/logo_green"
+            android:elevation="4dp" />
+
+        <ProgressBar
+
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
-            tools:layout_editor_absoluteX="22dp"
-            tools:layout_editor_absoluteY="620dp" />
+            android:layout_below="@id/relativeLayout"
+            android:layout_margin="16dp"
+            android:visibility="invisible"/>
+    </RelativeLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_marginBottom="5dp"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/registerDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Description"
-            tools:layout_editor_absoluteX="15dp"
-            tools:layout_editor_absoluteY="648dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:text="Register" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible" />
-
-
-</LinearLayout>
 </ScrollView>

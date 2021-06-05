@@ -1,4 +1,3 @@
-/*
 package com.example.edonation;
 
 import android.os.Bundle;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.edonation.adapterandviewholders.donorAdapter;
 import com.example.edonation.pojoclasses.Donor;
 import com.example.edonation.pojoclasses.Organisation;
+import com.example.edonation.utils.ExtraUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +35,16 @@ public class activity_home_donor extends Fragment {
     FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     String databaseOrganisationName;
+    String fullName;
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if(getArguments() != null)
+            fullName = getArguments().getString(ExtraUtils.EXTRA_EMAIL); // Passing Data
+
+        Log.i("EmailPassCheckers","Email: "+fullName);
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,10 +53,10 @@ public class activity_home_donor extends Fragment {
 
         View view= inflater.inflate(R.layout.activity_home_donorlist_dashboard,container, false);
 
-        //email=user.getEmail();
+
         recyclerView=view.findViewById(R.id.homeRecyclerView);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext() ));
-        user = firebaseAuth.getCurrentUser();
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext() ));
+
 
         databaseOrganisation=FirebaseDatabase.getInstance().getReference("organisationDetails");
 
@@ -58,13 +68,13 @@ public class activity_home_donor extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ss:snapshot.getChildren())
                 {
-                    Donor data=ss.getValue(Donor.class);
+                    Donor datas=ss.getValue(Donor.class);
                     int status;
-                    fetchData.add(data);
+                    fetchData.add(datas);
                     try {
-                        String orgName=data.getOrganisationName();
-                        if(orgName.equals(databaseOrganisationName)){
-                            fetchData.add(data);
+                        String orgName=datas.getOrganisationName();
+                        if(orgName.equals(fullName)){
+                            fetchData.add(datas);
                             donorAdapter=new donorAdapter(fetchData);
                             recyclerView.setAdapter(donorAdapter);
                         }
@@ -108,15 +118,22 @@ public class activity_home_donor extends Fragment {
             databaseOrganisation.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot ss:snapshot.getChildren())
-                    {
-                        Organisation data=ss.getValue(Organisation.class);
-                        String emailFromDB="a";
-
-                        databaseOrganisationName=data.getFullName();
+                    if (snapshot.exists()) {
+                        for (DataSnapshot ss : snapshot.getChildren()) {
+                            Organisation data = ss.getValue(Organisation.class);
+                            String fullNameFromDb = data.getFullName();
 
 
+                            if (fullName.equals(fullNameFromDb)) {
+                                String name = data.getFullName();
+                                String emailID = data.getEmail();
+                            /*organizationNameString=org.getOrgFullName();
+                            organizationEmail.setText(emailID);
+                            organizationName.setText(name);*/
+                            }
 
+
+                        }
                     }
                 }
 
@@ -130,4 +147,3 @@ public class activity_home_donor extends Fragment {
         }
     }
 }
-*/
